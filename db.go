@@ -36,6 +36,7 @@ type (
 
 	Rows interface {
 		Close() error
+		Columns() ([]string, error)
 		Err() error
 		Next() bool
 		Scan(dest ...interface{}) error
