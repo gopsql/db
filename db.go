@@ -15,9 +15,12 @@ type (
 	DB interface {
 		Close() error
 		Exec(query string, args ...interface{}) (Result, error)
+		ExecContext(ctx context.Context, query string, args ...interface{}) (Result, error)
 		Query(query string, args ...interface{}) (Rows, error)
+		QueryContext(ctx context.Context, query string, args ...interface{}) (Rows, error)
 		QueryRow(query string, args ...interface{}) Row
-		BeginTx(ctx context.Context, isolationLevel string) (Tx, error)
+		QueryRowContext(ctx context.Context, query string, args ...interface{}) Row
+		BeginTx(ctx context.Context, isolationLevel string, readOnly bool) (Tx, error)
 		ErrNoRows() error
 		ErrGetCode(err error) string
 	}
