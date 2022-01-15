@@ -21,6 +21,7 @@ type (
 		QueryRow(query string, args ...interface{}) Row
 		QueryRowContext(ctx context.Context, query string, args ...interface{}) Row
 		BeginTx(ctx context.Context, isolationLevel string, readOnly bool) (Tx, error)
+		DriverName() string
 		ErrNoRows() error
 		ErrGetCode(err error) string
 	}
